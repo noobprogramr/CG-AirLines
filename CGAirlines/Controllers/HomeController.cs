@@ -11,7 +11,7 @@ namespace CGAirlines.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            //yolo
             return View();
         }
     }
