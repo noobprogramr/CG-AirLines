@@ -15,6 +15,8 @@ namespace CGAirlines.Controllers
 
             
             //hello
+            
+            //king
             return View();
         }
     }
