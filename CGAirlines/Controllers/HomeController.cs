@@ -12,6 +12,8 @@ namespace CGAirlines.Controllers
         {
             ViewBag.Title = "Home Page";
             //yolo
+
+            
             return View();
         }
     }
