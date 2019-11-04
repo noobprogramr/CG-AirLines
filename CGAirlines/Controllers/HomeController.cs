@@ -12,9 +12,7 @@ namespace CGAirlines.Controllers
         {
             ViewBag.Title = "Home Page";
             //yolo
-            //kaisan baaa
-            //commit
-            //another one
+            
             return View();
         }
     }
