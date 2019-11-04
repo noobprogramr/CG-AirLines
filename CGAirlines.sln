@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CGAirlines", "CGAirlines\CGAirlines.csproj", "{7FD68C5E-FDE3-412E-9D6B-34C7679DB2D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OARSMVC", "OARSMVC\OARSMVC.csproj", "{9957698A-4827-419C-969A-59B74B1A659A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7FD68C5E-FDE3-412E-9D6B-34C7679DB2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD68C5E-FDE3-412E-9D6B-34C7679DB2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD68C5E-FDE3-412E-9D6B-34C7679DB2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9957698A-4827-419C-969A-59B74B1A659A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9957698A-4827-419C-969A-59B74B1A659A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9957698A-4827-419C-969A-59B74B1A659A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9957698A-4827-419C-969A-59B74B1A659A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

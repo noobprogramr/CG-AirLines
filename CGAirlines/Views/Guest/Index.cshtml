@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CGAirlines.tblFlight>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightRecord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightOrigin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightDestination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinationTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FareDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfSeats)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightRecord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightOrigin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightDestination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinationTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FareDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfSeats)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FlightNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FlightNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FlightNumber })
+        </td>
+    </tr>
+}
+
+</table>
