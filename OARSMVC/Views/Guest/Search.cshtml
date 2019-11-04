@@ -1,0 +1,98 @@
+﻿@model IEnumerable<OARSMVC.tblFlight>
+
+
+@{
+    ViewBag.Title = "Search";
+}
+@{
+    TimeSpan difference = DateTime.Parse("00:00:00").Subtract(DateTime.Parse("00:00:00"));
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" style="background-color:mistyrose">
+    <tr>
+        <th>
+            Flight Number
+            @* @Html.DisplayNameFor(model => model.FlightNumber)*@
+        </th>
+        <th>
+            Flight Origin
+            @*  @Html.DisplayNameFor(model => model.FlightOrigin)*@
+        </th>
+        <th>
+            Flight Destination
+            @* @Html.DisplayNameFor(model => model.FlightDestination)*@
+        </th>
+        <th>
+            Arrival Time
+            @* @Html.DisplayNameFor(model => model.ArrivalTime)*@
+        </th>
+        <th>
+            Destination Time
+            @* @Html.DisplayNameFor(model => model.DestinationTime)*@
+        </th>
+        <th>
+            Travel Time
+            @* @Html.DisplayNameFor(model => model.DestinationTime)*@
+        </th>
+        <th>
+            Fare Details
+            @*  @Html.DisplayNameFor(model => model.FareDetails)*@
+        </th>
+
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        difference = @DateTime.Parse(Convert.ToString(item.DestinationTime)).Subtract(DateTime.Parse(Convert.ToString(item.ArrivalTime)));
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightOrigin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightDestination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinationTime)
+        </td>
+        
+        <td>
+
+            @Html.DisplayFor(modelItem => difference.Hours)
+            Hrs
+            @Html.DisplayFor(modelItem => difference.Minutes)
+            Min
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FareDetails)
+        </td>
+      
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FlightNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FlightNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FlightNumber })
+            
+        </td>*@
+        <td>
+            <button class="ui-button img-rounded form-control" style="background-color:dodgerblue; color:white"><b>Book Now</b></button>
+        </td>
+    </tr>
+
+    }
+
+</table>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC.Models
+namespace OARSMVC
 {
     using System;
     using System.Data.Entity;
@@ -16,7 +16,7 @@ namespace OARSMVC.Models
     public partial class OARSEntities : DbContext
     {
         public OARSEntities()
-            : base("name=OARSEntities")
+            : base("name=OARSEntities1")
         {
         }
     

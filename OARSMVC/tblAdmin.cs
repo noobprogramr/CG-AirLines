@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC.Models
+namespace OARSMVC
 {
     using System;
     using System.Collections.Generic;
