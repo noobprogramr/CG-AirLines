@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<html>
+<head>
+    <style>
+        #loginbox {
+            margin-top: 75px;
+            margin-left: 100px;
+            margin-right: 250px;
+            height: 300px;
+            border: 1px solid #9C9C9C;
+            background-color: #EAEAEA;
+        }
+
+        #login {
+            margin-top: 30px;
+            margin-left: 150px;
+            margin-right: 100px;
+            height: 30px;
+        }
+
+        #pswd {
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 100px;
+            height: 30px;
+        }
+
+        #submit {
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 100px;
+            height: 10px;
+        }
+
+        #header1 {
+            margin-top: 30px;
+            margin-left: 250px;
+            margin-right: 100px;
+        }
+    </style>
+</head>
+<body style="background-image: url('/Images/plane.jpg');background-position:center;background-repeat:no-repeat">
+    <h1 class="text-center text-black pt-5">Online Airline Reservation System</h1>
+    <div id="loginbox">
+        <div id="header1">
+            <h3>Admin Login</h3>
+        </div>
+        <div id="login">
+            <label for="loginid" class="text-info text-center">Login ID:</label>
+            <input type="text" name="loginid" id="loginid" class="form-control" required>
+        </div>
+        <div id="pswd">
+            <label for="password" class="text-info">Password:</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+        <div id="submit">
+            @*<label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>*@
+            <input type="button" name="submit" onclick="" class="btn btn-info btn-md" value="submit">
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
