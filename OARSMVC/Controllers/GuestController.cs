@@ -8,10 +8,29 @@ namespace OARSMVC.Controllers
 {
     public class GuestController : Controller
     {
+        private OARSEntities db = new OARSEntities();
         // GET: Guest
         public ActionResult Index()
         {
-            return View();
+            
+            var origin = (from m in db.tblFlights
+                         select m.FlightOrigin).Distinct();
+            ViewBag.FlightOrigin = new SelectList(origin);
+
+            var destination = (from m in db.tblFlights
+                         select m.FlightDestination
+
+           ).Distinct();
+            ViewBag.FlightDestination = new SelectList(destination);
+            return View(db.tblFlights.ToList());
+
+
+
+        }
+
+        public ActionResult Search()
+        {
+            return View(db.tblFlights.ToList());
         }
 
         // GET: Guest/Details/5

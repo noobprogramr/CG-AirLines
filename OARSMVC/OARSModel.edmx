@@ -164,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OARSEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OARSEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Guests" EntityType="Self.Guest" />
           <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
           <EntitySet Name="tblBookings" EntityType="Self.tblBooking" />
@@ -183,7 +183,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OARSModelStoreContainer" CdmEntityContainer="OARSEntities">
+        <EntityContainerMapping StorageEntityContainer="OARSModelStoreContainer" CdmEntityContainer="OARSEntities1">
           <EntitySetMapping Name="Guests">
             <EntityTypeMapping TypeName="OARSModel.Guest">
               <MappingFragment StoreEntitySet="Guest">

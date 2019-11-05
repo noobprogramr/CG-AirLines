@@ -7,27 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC.Models
+namespace OARSMVC
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblFlight
+    public partial class Guest
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblFlight()
+        public Guest()
         {
             this.tblBookings = new HashSet<tblBooking>();
         }
     
-        public int FlightRecord { get; set; }
-        public string FlightNumber { get; set; }
-        public string FlightOrigin { get; set; }
-        public string FlightDestination { get; set; }
-        public System.TimeSpan ArrivalTime { get; set; }
-        public System.TimeSpan DestinationTime { get; set; }
-        public decimal FareDetails { get; set; }
-        public int NoOfSeats { get; set; }
+        public int GuestRecord { get; set; }
+        public string GuestName { get; set; }
+        public string GuestEmail { get; set; }
+        public long GuestPhoneNo { get; set; }
+        public Nullable<int> GuestAge { get; set; }
+        public string GuestGender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBooking> tblBookings { get; set; }
