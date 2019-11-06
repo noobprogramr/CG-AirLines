@@ -1,15 +1,32 @@
 ﻿@model OARSMVC.Guest
+@{
+                /**/
 
+                Layout = "~/Views/Shared/SearchLayout.cshtml";
+}
 
 @{
     ViewBag.Title = "Create";
 }
-@*@{ 
-    OARSMVC.tblFlight tblFlight = new tblFlight();
+@*@{
+        OARSMVC.tblFlight tblFlight = new tblFlight();
 
-}*@
+    }*@
+<div>
+    <div class="left">
 
-<h3>Passenger Details</h3>
+        <img src="~/Images/logo.png" />
+    </div>
+
+</div>
+<div>
+    <h2 style="color:white;background-color:grey;height:50px;text-align:center;margin-top:30px;font-family:'Arial Rounded MT'">
+        <span class="glyphicon glyphicon-user " style="color:white;margin-top:10px"></span>
+        <span>Traveller Details</span>
+    </h2>
+</div>
+
+
 
 
 @using (Html.BeginForm())
@@ -31,9 +48,13 @@
                 @Html.ValidationMessageFor(model => model.GuestEmail, "", new { @class = "text-danger" })
                 <br />
                 @Html.LabelFor(model => model.GuestPhoneNo, "Contact", htmlAttributes: new { @class = "control-label col-md-2" })
-
-                @Html.EditorFor(model => model.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control", Type="text" } })
                 @Html.ValidationMessageFor(model => model.GuestPhoneNo, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.GuestAge, "Age", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.GuestAge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GuestAge, "", new { @class = "text-danger" })
                 <br />
                 @Html.LabelFor(model => model.GuestGender, "Gender", htmlAttributes: new { @class = "control-label col-md-2" })
 
@@ -42,37 +63,39 @@
                 @Html.RadioButton("search", "GuestGender") <text>Others</text>
                 <br />
                 <br />
-                <input type="submit" value="Submit" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-success" />
             </div>
         </div>
     </div>
-    <h3>Flight Summary</h3>
+    <div>
+        <h2 style="color:white;background-color:grey;height:50px;text-align:center;margin-top:30px;font-family:'Arial Rounded MT'">
+            <img src="~/Images/_plane.jpg" />
+            <span>Flight Summary</span>
+        </h2>
+    </div>
+
     <div class="jumbotron">
         <div class="container container-fluid">
-            @{
-                OARSMVC.tblFlight flight = new tblFlight();
-                string Fnumber = flight.FlightNumber;
-                <table>
-                    <tr>
-                        <td>Flight Number</td>
-                    </tr>
-                    <tr>
-                        <td>Fnumber</td>
-                    </tr>
-                </table>
-
-            }
-
+            <div class="form-group">
+                @Html.Label("Flight Number")
+                
+                <br />
+                @Html.Label("From")
+                <br />
+                @Html.Label("To")
+                <br />
+                @Html.Label("Date")
+                <br />
+            </div>
         </div>
-    </div>
+     </div>
+
 }
-/**/
 
 
-
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

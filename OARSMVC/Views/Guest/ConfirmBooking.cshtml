@@ -1,31 +1,48 @@
 ﻿@using OARSMVC.Models
 @model OARSMVC.tblBooking
-
+@{
+    Layout = "~/Views/Shared/SearchLayout.cshtml";
+}
 @{
     ViewBag.Title = "ConfirmBooking";
 }
 
-<h3>Booking Details</h3>
+
 
 <head>
     <style>
         th {
-            background-color: linen;
+            background-color: white;
             font-size: 20px;
             color: black;
+            text-align: center;
         }
 
-        th {
-            background-color: blanchedalmond;
+        table {
+            background-color: lightgray;
             font-family: 'Arial Rounded MT';
+            border-radius: 13px;
+            text-align: center;
         }
     </style>
 </head>
+<div>
+    <div class="left">
 
+        <img src="~/Images/logo.png" />
+    </div>
 
+</div>
+<div>
+    <h2 style="color:white;background-color:grey;height:50px;text-align:center;margin-top:30px;font-family:'Arial Rounded MT'">
+        @*<span style="color:white;margin-top:10px"></span>*@
+        <img src="~/Images/_plane.jpg" />
+        <span>Booking Summary</span>
+    </h2>
+</div>
 <table class="table">
     <tr>
-       
+
         <th>Date Of Journey</th>
         <th> Booking Ticket Status</th>
 
@@ -42,7 +59,7 @@
         @*  <h3>Passenger Details</h3>*@
 
         <div class="form-group">
-            
+
 
             <table>
                 <tr>
@@ -69,12 +86,25 @@
                         @Html.EditorFor(model => model.tblFlight.FlightDestination, new { htmlAttributes = new { @class = "form-control" } })
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Email")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Guest.GuestEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Contact")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Guest.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
             </table>
 
         </div>
-        </div>
     </div>
-            @*<p>
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingPNR }) |
-                    @Html.ActionLink("Back to List", "Index")
-                </p>*@
+</div>
+

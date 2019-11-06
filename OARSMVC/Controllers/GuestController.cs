@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OARSMVC.Models;
 
 namespace OARSMVC.Controllers
 {
@@ -57,15 +58,18 @@ namespace OARSMVC.Controllers
         // GET: Guest/Create
         public ActionResult Create()
         {
+           
             List<tblFlight> flights = db.tblFlights.ToList();
             List<Guest> guests = db.Guests.ToList();
-            
+           
+            ViewBag.FlightNumber = new SelectList(db.tblFlights, "FlightNumber", "FlightNumber");
+
             return View();
         }
 
         // POST: Guest/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "FlightNumber,FlightOrigin,Flight Destination")] Guest guest)
+        public ActionResult Create([Bind(Include = "GuestName,GuestEmail,GuestPhoneNo,GuestAge,GuestGender")] Guest guest)
         {
             if (ModelState.IsValid)
             {

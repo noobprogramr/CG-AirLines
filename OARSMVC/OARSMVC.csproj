@@ -222,6 +222,7 @@
     <Content Include="Images\place-03.jpg" />
     <Content Include="Images\place-04.jpg" />
     <Content Include="Images\service-icon-03.3.png" />
+    <Content Include="Images\_plane.jpg" />
     <Content Include="OARSModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OARSModel.edmx</DependentUpon>
@@ -274,6 +275,7 @@
     <Content Include="Views\Guest\Create.cshtml" />
     <Content Include="Views\Guest\IndexSample.cshtml" />
     <Content Include="Views\Guest\ConfirmBooking.cshtml" />
+    <Content Include="Views\Shared\SearchLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

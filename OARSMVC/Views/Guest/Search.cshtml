@@ -1,19 +1,53 @@
 ﻿@model IEnumerable<OARSMVC.tblFlight>
 
-
+@{
+    Layout = "~/Views/Shared/SearchLayout.cshtml";
+}
 @{
     ViewBag.Title = "Search";
 }
 @{
     TimeSpan difference = DateTime.Parse("00:00:00").Subtract(DateTime.Parse("00:00:00"));
 }
+<head>
 
-<h2>Search</h2>
+    <style>
+        th {
+            background-color: white;
+            font-size: 20px;
+            color: black;
+            text-align: center;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table" style="background-color:mistyrose">
+        table {
+            background-color: lightgray;
+            font-family: 'Arial Rounded MT';
+            border-radius: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+<div>
+    <div class="left">
+
+        <img src="~/Images/logo.png" />
+    </div>
+
+</div>
+
+@*<h2 style="color:white;background-color:grey;height:50px;text-align:center;margin-top:30px;font-family:'Arial Rounded MT'">Available Flights</h2>*@
+<div>
+    <h2 style="color:white;background-color:grey;height:50px;text-align:center;margin-top:30px;font-family:'Arial Rounded MT'">
+        @*<span style="color:white;margin-top:10px"></span>*@
+        <img src="~/Images/_plane.jpg" />
+        <span>Available Flights</span>
+    </h2>
+</div>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
     <tr>
         <th>
             Flight Number
@@ -53,46 +87,46 @@
     {
 
         difference = @DateTime.Parse(Convert.ToString(item.DestinationTime)).Subtract(DateTime.Parse(Convert.ToString(item.ArrivalTime)));
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlightNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlightOrigin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlightDestination)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DestinationTime)
-        </td>
-        
-        <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightOrigin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationTime)
+            </td>
 
-            @Html.DisplayFor(modelItem => difference.Hours)
-            Hrs
-            @Html.DisplayFor(modelItem => difference.Minutes)
-            Min
+            <td>
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FareDetails)
-        </td>
-      
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FlightNumber }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FlightNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FlightNumber })
-            
-        </td>*@
-        <td>
-            
-          <b style="text-align:center">  @Html.ActionLink("book now", "Create", new { id = item.FlightNumber }, new { @style = "background-color:dodgerblue; color:white", @class= "ui-button img-rounded form-control"} ) </b>
-        </td>
-    </tr>
+                @Html.DisplayFor(modelItem => difference.Hours)
+                Hrs
+                @Html.DisplayFor(modelItem => difference.Minutes)
+                Min
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FareDetails)
+            </td>
+
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.FlightNumber }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.FlightNumber }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.FlightNumber })
+
+                </td>*@
+            <td>
+
+                <b style="text-align:center">  @Html.ActionLink("book now", "Create", new { id = item.FlightNumber }, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b>
+            </td>
+        </tr>
 
     }
 
