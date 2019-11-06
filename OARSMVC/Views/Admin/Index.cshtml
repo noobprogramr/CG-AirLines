@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <style>
+        #div1{
+            margin-left:0px;
+        }
+    </style>
+</head>
+<body style="background-image: url('/Images/plane.jpg');background-position:center;background-repeat:no-repeat">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li style="list-style:none;display:block;background-color:darkseagreen;">@Html.ActionLink("Add Flight", "About", "Home")</li>
+            <li style="list-style:none;display:block;background-color:darkseagreen;">@Html.ActionLink("Search Flight", "About", "Home")</li>
+            <li style="list-style:none;display:block;background-color:darkseagreen;">@Html.ActionLink("Remove Flight", "About", "Home")</li>
+            <li style="list-style:none;display:block;background-color:darkseagreen;">@Html.ActionLink("Logout", "About", "Home")</li>
+
+        </ul>
+    </div>
+</body>
+</html>
