@@ -89,7 +89,8 @@
             
         </td>*@
         <td>
-            <button class="ui-button img-rounded form-control" style="background-color:dodgerblue; color:white"><b>Book Now</b></button>
+            
+          <b style="text-align:center">  @Html.ActionLink("book now", "Create", new { id = item.FlightNumber }, new { @style = "background-color:dodgerblue; color:white", @class= "ui-button img-rounded form-control"} ) </b>
         </td>
     </tr>
 

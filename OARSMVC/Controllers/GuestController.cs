@@ -9,6 +9,8 @@ namespace OARSMVC.Controllers
     public class GuestController : Controller
     {
         private OARSEntities db = new OARSEntities();
+
+       
         // GET: Guest
         public ActionResult Index()
         {
@@ -27,6 +29,19 @@ namespace OARSMVC.Controllers
 
 
         }
+        //public ActionResult IndexSample()
+        //{
+        //    var origin = (from m in db.tblFlights
+        //                  select m.FlightOrigin).Distinct();
+        //    ViewBag.FlightOrigin = new SelectList(origin);
+
+        //    var destination = (from m in db.tblFlights
+        //                       select m.FlightDestination
+
+        //   ).Distinct();
+        //    ViewBag.FlightDestination = new SelectList(destination);
+        //    return View(db.tblFlights.ToList());
+        //}
 
         public ActionResult Search()
         {
@@ -42,23 +57,24 @@ namespace OARSMVC.Controllers
         // GET: Guest/Create
         public ActionResult Create()
         {
+            List<tblFlight> flights = db.tblFlights.ToList();
+            List<Guest> guests = db.Guests.ToList();
+            
             return View();
         }
 
         // POST: Guest/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "FlightNumber,FlightOrigin,Flight Destination")] Guest guest)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                db.Guests.Add(guest);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(guest);
         }
 
         // GET: Guest/Edit/5
@@ -103,6 +119,12 @@ namespace OARSMVC.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ConfirmBooking()
+        {
+
+            return View();
         }
     }
 }

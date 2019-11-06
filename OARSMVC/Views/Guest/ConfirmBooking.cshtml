@@ -1,0 +1,80 @@
+﻿@using OARSMVC.Models
+@model OARSMVC.tblBooking
+
+@{
+    ViewBag.Title = "ConfirmBooking";
+}
+
+<h3>Booking Details</h3>
+
+<head>
+    <style>
+        th {
+            background-color: linen;
+            font-size: 20px;
+            color: black;
+        }
+
+        th {
+            background-color: blanchedalmond;
+            font-family: 'Arial Rounded MT';
+        }
+    </style>
+</head>
+
+
+<table class="table">
+    <tr>
+       
+        <th>Date Of Journey</th>
+        <th> Booking Ticket Status</th>
+
+
+    </tr>
+    @*<tr>
+            <th>Name</th>
+            <th>Departure </th>
+            <th>Destination</th>
+        </tr>*@
+</table>
+<div class="jumbotron">
+    <div class="container ">
+        @*  <h3>Passenger Details</h3>*@
+
+        <div class="form-group">
+            
+
+            <table>
+                <tr>
+                    <td>
+                        @Html.Label("Name")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Guest.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Departure")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.tblFlight.FlightOrigin, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Destination")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.tblFlight.FlightDestination, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        </div>
+    </div>
+            @*<p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingPNR }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>*@

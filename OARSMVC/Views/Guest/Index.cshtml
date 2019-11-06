@@ -1,11 +1,13 @@
 ﻿@using OARSMVC.Models
 @model IEnumerable<OARSMVC.tblFlight>
-
+@{
+    Layout = "~/Views/Shared/_OARSLayout.cshtml";
+}
 
 @{
     ViewBag.Title = "Index";
 }
-@{ 
+@{
     Passenger obj = new Passenger();
 }
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -14,14 +16,33 @@
 <head>
     <style>
         th {
-            background-color: linen;
+            background-color: white;
             font-size: 20px;
             color: black;
+            text-align: center;
         }
 
         table {
-            background-color: blanchedalmond;
+            background-color: lightgray;
             font-family: 'Arial Rounded MT';
+            border-radius: 13px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 25.00%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
         }
     </style>
 </head>
@@ -30,42 +51,114 @@
         $("#EnterDate").datepicker();
     });
 </script>
-<h2 style=" font-family:'Californian FB'; font-size:30px"><marquee>Online Airline Reservation System</marquee></h2>
+@*<h2 style=" font-family:'Californian FB'; font-size:30px;color:white"><marquee>Online Airline Reservation System</marquee></h2>*@
 
 
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table class="table">
-    <tr>
-        <th>Going From</th>
-        <th>Going To</th>
-        <th>Date Of Journey</th>
-        <th>Seats</th>
-        <th> </th>
-        
-    </tr>
-    <tr>
-        <td>@Html.DropDownList("FlightOrigin", ViewBag.FlightOrigin as SelectList, "From", htmlAttributes: new { @class = "form-control" })</td>
-        <td>@Html.DropDownList("FlightDestination", ViewBag.FlightDestination as SelectList, "To", htmlAttributes: new { @class = "form-control" })</td>
+<div>
+    <div class="left">
 
-        <td>
-            @Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })
+        <img src="~/Images/logo.png" />
+    </div>
 
-        </td>
-        <td>
-            @Html.DropDownList("seats",
-                    new SelectList(Enum.GetValues(typeof(GuestSeat))),
-                    "Select No of seats",
-                    new { @class = "form-control" })
-        </td>
-        <td>
-            <input type="submit" value="search" class="btn btn-info" />
-        </td>
-    </tr>
+</div>
 
+
+@*<div class="glyphicon-phone">
+
+    </div>*@
+<br />
+<br />
+
+<div class="right">
+    <table class="table">
+        <tr>
+            <th>Going From</th>
+            <th>Going To</th>
+            <th>Date Of Journey</th>
+            <th>Seats</th>
+            <th> </th>
+
+        </tr>
+        <tr>
+            <td>@Html.DropDownList("FlightOrigin", ViewBag.FlightOrigin as SelectList, "From", htmlAttributes: new { @class = "form-control" })</td>
+            <td>@Html.DropDownList("FlightDestination", ViewBag.FlightDestination as SelectList, "To", htmlAttributes: new { @class = "form-control" })</td>
+
+            <td>
+                @Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })
+
+            </td>
+            <td>
+                @Html.DropDownList("seats",
+                        new SelectList(Enum.GetValues(typeof(GuestSeat))),
+                        "Select No of seats",
+                        new { @class = "form-control" })
+            </td>
+            <td>
+                <input type="submit" value="search" class="btn btn-info " />
+                @*<b style="text-align:center">  @Html.ActionLink("Search", "Search", new { id =   }, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b>*@
+            </td>
+        </tr>
+
+    </table>
+</div>
+<table class="table" style="text-align:center">
+    <tr><th>Flight Number</th><th>Going From</th><th>Going To</th><th>Arrival Time</th><th>Destination Time</th><th>Available Seats</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightOrigin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfSeats)
+            </td>
+        </tr>
+    }
 </table>
+<br />
+<br />
+<br />
+<p style="color:white; font-family:'Bell MT'; font-size:35px; text-align:center"><b>Most Visited Places</b></p>
+<div class="container" style="background-color:white;color:darkslateblue">
+    <div class="row">
+        <div class="column">
+            <img src="~/Images/place-01.jpg" alt="Snow" style="width:100%" class="img-rounded">
+            <h4>River Views</h4>
+            <span>New York</span>
 
+        </div>
+        <div class="column">
+            <img src="~/Images/place-02.jpg" alt="Forest" style="width:100%" class="img-rounded">
+            <h4>Lorem ipsum dolor</h4>
+            <span>Tokyo</span>
+        </div>
+        <div class="column">
+            <img src="~/Images/place-03.jpg" alt="Mountains" style="width:100%" class="img-rounded">
+            <h4>Proin dignissim</h4>
+            <span>Paris</span>
+        </div>
+        <div class="column">
+            <img src="~/Images/place-04.jpg" alt="Mountains" style="width:100%" class="img-rounded">
+            <h4>Fusce sed ipsum</h4>
+            <span>Hollywood</span>
+        </div>
+    </div>
+</div>
 @*<table class="table">
         <tr>
 
@@ -137,5 +230,4 @@
         }
 
     </table>*@
-
 

@@ -213,8 +213,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\banner-bg.jpg" />
     <Content Include="Images\flights-desktop.png" />
     <Content Include="Images\flights-desktop1.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\place-01.jpg" />
+    <Content Include="Images\place-02.jpg" />
+    <Content Include="Images\place-03.jpg" />
+    <Content Include="Images\place-04.jpg" />
+    <Content Include="Images\service-icon-03.3.png" />
     <Content Include="OARSModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OARSModel.edmx</DependentUpon>
@@ -264,6 +271,9 @@
     <Content Include="Views\Guest\Index.cshtml" />
     <Content Include="Views\Shared\_OARSLayout.cshtml" />
     <Content Include="Views\Guest\Search.cshtml" />
+    <Content Include="Views\Guest\Create.cshtml" />
+    <Content Include="Views\Guest\IndexSample.cshtml" />
+    <Content Include="Views\Guest\ConfirmBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

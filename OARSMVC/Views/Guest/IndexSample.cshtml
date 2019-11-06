@@ -1,0 +1,95 @@
+﻿@model IQueryable<OARSMVC.tblFlight>
+@using OARSMVC.Models
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Passenger obj = new Passenger();
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<head>
+    <style>
+        th {
+            background-color: linen;
+            font-size: 20px;
+            color: black;
+        }
+
+        table {
+            background-color: blanchedalmond;
+            font-family: 'Arial Rounded MT';
+        }
+    </style>
+</head>
+<script>
+    $(document).ready(function () {
+        $("#EnterDate").datepicker();
+    });
+</script>
+<h2 style=" font-family:'Californian FB'; font-size:30px"><marquee>Online Airline Reservation System</marquee></h2>
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>Going From</th>
+        <th>Going To</th>
+        <th>Date Of Journey</th>
+        <th>Seats</th>
+        <th> </th>
+
+    </tr>
+    <tr>
+        <td>@Html.DropDownList("FlightOrigin", ViewBag.FlightOrigin as SelectList, "From", htmlAttributes: new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("FlightDestination", ViewBag.FlightDestination as SelectList, "To", htmlAttributes: new { @class = "form-control" })</td>
+
+        <td>
+            @Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })
+
+        </td>
+        <td>
+            @Html.DropDownList("seats",
+                    new SelectList(Enum.GetValues(typeof(GuestSeat))),
+                    "Select No of seats",
+                    new { @class = "form-control" })
+        </td>
+        <td>
+            <input type="submit" value="search" class="btn btn-info" />
+            @*<b style="text-align:center">  @Html.ActionLink("Search", "Search", new { id =   }, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b>*@
+        </td>
+    </tr>
+
+</table>
+@*<table class="table">
+    <tr><th>Flight Number</th><th>Going From</th><th>Going To</th><th>Arrival Time</th><th>Destination Time</th><th>Available Seats</th></tr>
+    @foreach (var item in model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightOrigin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfSeats)
+            </td>
+        </tr>
+    }
+</table>*@

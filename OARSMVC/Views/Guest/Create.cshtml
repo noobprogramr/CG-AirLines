@@ -1,0 +1,79 @@
+﻿@model OARSMVC.Guest
+
+
+@{
+    ViewBag.Title = "Create";
+}
+@*@{ 
+    OARSMVC.tblFlight tblFlight = new tblFlight();
+
+}*@
+
+<h3>Passenger Details</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        <div class="container container-fluid">
+            @*  <h3>Passenger Details</h3>*@
+
+            <div class="form-group">
+                <p style="font-size:small">IMPORTANT: Enter your name as it is mentioned on your passport or any government approved ID.</p>
+                @Html.LabelFor(model => model.GuestName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GuestName, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.GuestName, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.GuestEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GuestEmail, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.GuestPhoneNo, "Contact", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GuestPhoneNo, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.GuestGender, "Gender", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.RadioButton("search", "GuestGender") <text>Female</text>
+                @Html.RadioButton("search", "GuestGender") <text>Male</text>
+                @Html.RadioButton("search", "GuestGender") <text>Others</text>
+                <br />
+                <br />
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <h3>Flight Summary</h3>
+    <div class="jumbotron">
+        <div class="container container-fluid">
+            @{
+                OARSMVC.tblFlight flight = new tblFlight();
+                string Fnumber = flight.FlightNumber;
+                <table>
+                    <tr>
+                        <td>Flight Number</td>
+                    </tr>
+                    <tr>
+                        <td>Fnumber</td>
+                    </tr>
+                </table>
+
+            }
+
+        </div>
+    </div>
+}
+/**/
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -11,7 +11,8 @@ namespace OARSMVC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Guest
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,18 @@ namespace OARSMVC
         {
             this.tblBookings = new HashSet<tblBooking>();
         }
-    
+        
         public int GuestRecord { get; set; }
+        [Required(ErrorMessage = "Guest Name is required")]
         public string GuestName { get; set; }
+        [Required(ErrorMessage = "Email id is required")]
         public string GuestEmail { get; set; }
+        [Required(ErrorMessage = "Contact Number is required")]
+        [RegularExpression(@"^\(?([6-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public long GuestPhoneNo { get; set; }
+
         public Nullable<int> GuestAge { get; set; }
+        [Required(ErrorMessage = "Gender is required")]
         public string GuestGender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
