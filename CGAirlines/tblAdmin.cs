@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC.Models
+namespace CGAirlines
 {
     using System;
     using System.Collections.Generic;

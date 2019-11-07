@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC.Models
+namespace CGAirlines
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Guest
+    public partial class tblGuest
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Guest()
+        public tblGuest()
         {
             this.tblBookings = new HashSet<tblBooking>();
         }
     
-        public int GuestRecord { get; set; }
+        public int GuestID { get; set; }
         public string GuestName { get; set; }
         public string GuestEmail { get; set; }
         public long GuestPhoneNo { get; set; }

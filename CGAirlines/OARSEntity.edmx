@@ -4,18 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OARSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Guest">
-          <Key>
-            <PropertyRef Name="GuestRecord" />
-          </Key>
-          <Property Name="GuestRecord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GuestName" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="GuestEmail" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="GuestPhoneNo" Type="bigint" Nullable="false" />
-          <Property Name="GuestAge" Type="int" />
-          <Property Name="GuestGender" Type="char" MaxLength="1" />
-        </EntityType>
+      <Schema Namespace="DB_OARSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAdmin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -26,21 +15,21 @@
         </EntityType>
         <EntityType Name="tblBooking">
           <Key>
-            <PropertyRef Name="BookingPNR" />
+            <PropertyRef Name="BookingID" />
           </Key>
-          <Property Name="BookingRecord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookingPNR" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="DateOfJourney" Type="date" Nullable="false" />
           <Property Name="FlightStatus" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="BookingTicketStatus" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="GuestRecord" Type="int" />
-          <Property Name="FlightNumber" Type="varchar" MaxLength="7" />
+          <Property Name="GuestID" Type="int" />
+          <Property Name="FlightID" Type="int" />
         </EntityType>
         <EntityType Name="tblFlight">
           <Key>
-            <PropertyRef Name="FlightNumber" />
+            <PropertyRef Name="FlightID" />
           </Key>
-          <Property Name="FlightRecord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FlightNumber" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="FlightOrigin" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FlightDestination" Type="varchar" MaxLength="50" Nullable="false" />
@@ -49,41 +38,52 @@
           <Property Name="FareDetails" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="NoOfSeats" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblBookin__Fligh__182C9B23">
+        <EntityType Name="tblGuest">
+          <Key>
+            <PropertyRef Name="GuestID" />
+          </Key>
+          <Property Name="GuestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GuestPhoneNo" Type="bigint" Nullable="false" />
+          <Property Name="GuestAge" Type="int" />
+          <Property Name="GuestGender" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK__tblBookin__Fligh__1A14E395">
           <End Role="tblFlight" Type="Self.tblFlight" Multiplicity="0..1" />
           <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFlight">
-              <PropertyRef Name="FlightNumber" />
+              <PropertyRef Name="FlightID" />
             </Principal>
             <Dependent Role="tblBooking">
-              <PropertyRef Name="FlightNumber" />
+              <PropertyRef Name="FlightID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBookin__Guest__173876EA">
-          <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+        <Association Name="FK__tblBookin__Guest__1920BF5C">
+          <End Role="tblGuest" Type="Self.tblGuest" Multiplicity="0..1" />
           <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Guest">
-              <PropertyRef Name="GuestRecord" />
+            <Principal Role="tblGuest">
+              <PropertyRef Name="GuestID" />
             </Principal>
             <Dependent Role="tblBooking">
-              <PropertyRef Name="GuestRecord" />
+              <PropertyRef Name="GuestID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OARSModelStoreContainer">
-          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="DB_OARSModelStoreContainer">
           <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBooking" EntityType="Self.tblBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFlight" EntityType="Self.tblFlight" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblBookin__Fligh__182C9B23" Association="Self.FK__tblBookin__Fligh__182C9B23">
+          <EntitySet Name="tblGuest" EntityType="Self.tblGuest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblBookin__Fligh__1A14E395" Association="Self.FK__tblBookin__Fligh__1A14E395">
             <End Role="tblFlight" EntitySet="tblFlight" />
             <End Role="tblBooking" EntitySet="tblBooking" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBookin__Guest__173876EA" Association="Self.FK__tblBookin__Guest__173876EA">
-            <End Role="Guest" EntitySet="Guest" />
+          <AssociationSet Name="FK__tblBookin__Guest__1920BF5C" Association="Self.FK__tblBookin__Guest__1920BF5C">
+            <End Role="tblGuest" EntitySet="tblGuest" />
             <End Role="tblBooking" EntitySet="tblBooking" />
           </AssociationSet>
         </EntityContainer>
@@ -91,19 +91,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OARSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Guest">
-          <Key>
-            <PropertyRef Name="GuestRecord" />
-          </Key>
-          <Property Name="GuestRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GuestName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GuestEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GuestPhoneNo" Type="Int64" Nullable="false" />
-          <Property Name="GuestAge" Type="Int32" />
-          <Property Name="GuestGender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="tblBookings" Relationship="Self.FK__tblBookin__Guest__173876EA" FromRole="Guest" ToRole="tblBooking" />
-        </EntityType>
+      <Schema Namespace="DB_OARSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblAdmin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -114,23 +102,23 @@
         </EntityType>
         <EntityType Name="tblBooking">
           <Key>
-            <PropertyRef Name="BookingPNR" />
+            <PropertyRef Name="BookingID" />
           </Key>
-          <Property Name="BookingRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookingPNR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateOfJourney" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FlightStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BookingTicketStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GuestRecord" Type="Int32" />
-          <Property Name="FlightNumber" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Guest" Relationship="Self.FK__tblBookin__Guest__173876EA" FromRole="tblBooking" ToRole="Guest" />
-          <NavigationProperty Name="tblFlight" Relationship="Self.FK__tblBookin__Fligh__182C9B23" FromRole="tblBooking" ToRole="tblFlight" />
+          <Property Name="GuestID" Type="Int32" />
+          <Property Name="FlightID" Type="Int32" />
+          <NavigationProperty Name="tblFlight" Relationship="Self.FK__tblBookin__Fligh__1A14E395" FromRole="tblBooking" ToRole="tblFlight" />
+          <NavigationProperty Name="tblGuest" Relationship="Self.FK__tblBookin__Guest__1920BF5C" FromRole="tblBooking" ToRole="tblGuest" />
         </EntityType>
         <EntityType Name="tblFlight">
           <Key>
-            <PropertyRef Name="FlightNumber" />
+            <PropertyRef Name="FlightID" />
           </Key>
-          <Property Name="FlightRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FlightNumber" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FlightOrigin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FlightDestination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -138,43 +126,55 @@
           <Property Name="DestinationTime" Type="Time" Nullable="false" Precision="0" />
           <Property Name="FareDetails" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="NoOfSeats" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblBookings" Relationship="Self.FK__tblBookin__Fligh__182C9B23" FromRole="tblFlight" ToRole="tblBooking" />
+          <NavigationProperty Name="tblBookings" Relationship="Self.FK__tblBookin__Fligh__1A14E395" FromRole="tblFlight" ToRole="tblBooking" />
         </EntityType>
-        <Association Name="FK__tblBookin__Guest__173876EA">
-          <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
-          <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Guest">
-              <PropertyRef Name="GuestRecord" />
-            </Principal>
-            <Dependent Role="tblBooking">
-              <PropertyRef Name="GuestRecord" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tblBookin__Fligh__182C9B23">
+        <EntityType Name="tblGuest">
+          <Key>
+            <PropertyRef Name="GuestID" />
+          </Key>
+          <Property Name="GuestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GuestPhoneNo" Type="Int64" Nullable="false" />
+          <Property Name="GuestAge" Type="Int32" />
+          <Property Name="GuestGender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblBookings" Relationship="Self.FK__tblBookin__Guest__1920BF5C" FromRole="tblGuest" ToRole="tblBooking" />
+        </EntityType>
+        <Association Name="FK__tblBookin__Fligh__1A14E395">
           <End Role="tblFlight" Type="Self.tblFlight" Multiplicity="0..1" />
           <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFlight">
-              <PropertyRef Name="FlightNumber" />
+              <PropertyRef Name="FlightID" />
             </Principal>
             <Dependent Role="tblBooking">
-              <PropertyRef Name="FlightNumber" />
+              <PropertyRef Name="FlightID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OARSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Guests" EntityType="Self.Guest" />
+        <Association Name="FK__tblBookin__Guest__1920BF5C">
+          <End Role="tblGuest" Type="Self.tblGuest" Multiplicity="0..1" />
+          <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGuest">
+              <PropertyRef Name="GuestID" />
+            </Principal>
+            <Dependent Role="tblBooking">
+              <PropertyRef Name="GuestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_OARSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
           <EntitySet Name="tblBookings" EntityType="Self.tblBooking" />
           <EntitySet Name="tblFlights" EntityType="Self.tblFlight" />
-          <AssociationSet Name="FK__tblBookin__Guest__173876EA" Association="Self.FK__tblBookin__Guest__173876EA">
-            <End Role="Guest" EntitySet="Guests" />
+          <EntitySet Name="tblGuests" EntityType="Self.tblGuest" />
+          <AssociationSet Name="FK__tblBookin__Fligh__1A14E395" Association="Self.FK__tblBookin__Fligh__1A14E395">
+            <End Role="tblFlight" EntitySet="tblFlights" />
             <End Role="tblBooking" EntitySet="tblBookings" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBookin__Fligh__182C9B23" Association="Self.FK__tblBookin__Fligh__182C9B23">
-            <End Role="tblFlight" EntitySet="tblFlights" />
+          <AssociationSet Name="FK__tblBookin__Guest__1920BF5C" Association="Self.FK__tblBookin__Guest__1920BF5C">
+            <End Role="tblGuest" EntitySet="tblGuests" />
             <End Role="tblBooking" EntitySet="tblBookings" />
           </AssociationSet>
         </EntityContainer>
@@ -183,21 +183,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OARSModelStoreContainer" CdmEntityContainer="OARSEntities">
-          <EntitySetMapping Name="Guests">
-            <EntityTypeMapping TypeName="OARSModel.Guest">
-              <MappingFragment StoreEntitySet="Guest">
-                <ScalarProperty Name="GuestRecord" ColumnName="GuestRecord" />
-                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
-                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
-                <ScalarProperty Name="GuestPhoneNo" ColumnName="GuestPhoneNo" />
-                <ScalarProperty Name="GuestAge" ColumnName="GuestAge" />
-                <ScalarProperty Name="GuestGender" ColumnName="GuestGender" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="DB_OARSModelStoreContainer" CdmEntityContainer="DB_OARSEntities">
           <EntitySetMapping Name="tblAdmins">
-            <EntityTypeMapping TypeName="OARSModel.tblAdmin">
+            <EntityTypeMapping TypeName="DB_OARSModel.tblAdmin">
               <MappingFragment StoreEntitySet="tblAdmin">
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -206,22 +194,22 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBookings">
-            <EntityTypeMapping TypeName="OARSModel.tblBooking">
+            <EntityTypeMapping TypeName="DB_OARSModel.tblBooking">
               <MappingFragment StoreEntitySet="tblBooking">
-                <ScalarProperty Name="BookingRecord" ColumnName="BookingRecord" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
                 <ScalarProperty Name="BookingPNR" ColumnName="BookingPNR" />
                 <ScalarProperty Name="DateOfJourney" ColumnName="DateOfJourney" />
                 <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
                 <ScalarProperty Name="BookingTicketStatus" ColumnName="BookingTicketStatus" />
-                <ScalarProperty Name="GuestRecord" ColumnName="GuestRecord" />
-                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+                <ScalarProperty Name="FlightID" ColumnName="FlightID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFlights">
-            <EntityTypeMapping TypeName="OARSModel.tblFlight">
+            <EntityTypeMapping TypeName="DB_OARSModel.tblFlight">
               <MappingFragment StoreEntitySet="tblFlight">
-                <ScalarProperty Name="FlightRecord" ColumnName="FlightRecord" />
+                <ScalarProperty Name="FlightID" ColumnName="FlightID" />
                 <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
                 <ScalarProperty Name="FlightOrigin" ColumnName="FlightOrigin" />
                 <ScalarProperty Name="FlightDestination" ColumnName="FlightDestination" />
@@ -229,6 +217,18 @@
                 <ScalarProperty Name="DestinationTime" ColumnName="DestinationTime" />
                 <ScalarProperty Name="FareDetails" ColumnName="FareDetails" />
                 <ScalarProperty Name="NoOfSeats" ColumnName="NoOfSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGuests">
+            <EntityTypeMapping TypeName="DB_OARSModel.tblGuest">
+              <MappingFragment StoreEntitySet="tblGuest">
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhoneNo" ColumnName="GuestPhoneNo" />
+                <ScalarProperty Name="GuestAge" ColumnName="GuestAge" />
+                <ScalarProperty Name="GuestGender" ColumnName="GuestGender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
