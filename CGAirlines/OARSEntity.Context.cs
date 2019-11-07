@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OARSMVC
+namespace CGAirlines
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OARSEntities : DbContext
+    public partial class DB_OARSEntities : DbContext
     {
-        public OARSEntities()
-            : base("name=OARSEntities1")
+        public DB_OARSEntities()
+            : base("name=DB_OARSEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,9 +27,9 @@ namespace OARSMVC
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Guest> Guests { get; set; }
         public virtual DbSet<tblAdmin> tblAdmins { get; set; }
         public virtual DbSet<tblBooking> tblBookings { get; set; }
         public virtual DbSet<tblFlight> tblFlights { get; set; }
+        public virtual DbSet<tblGuest> tblGuests { get; set; }
     }
 }

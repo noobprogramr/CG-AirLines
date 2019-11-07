@@ -16,6 +16,7 @@
             font-size: 20px;
             color: black;
             text-align: center;
+           
         }
 
         table {
@@ -23,6 +24,7 @@
             font-family: 'Arial Rounded MT';
             border-radius: 13px;
             text-align: center;
+
         }
     </style>
 </head>
@@ -58,53 +60,122 @@
     <div class="container ">
         @*  <h3>Passenger Details</h3>*@
 
-        <div class="form-group">
+     
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Passenger Details</h3>
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Label("Name")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Guest.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
 
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Age")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Guest.GuestAge, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Gender")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Guest.GuestGender, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           
+            <div class="col-md-4">
+                <h3>Contact Information</h3>
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Label("Email")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Guest.GuestEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
 
-            <table>
-                <tr>
-                    <td>
-                        @Html.Label("Name")
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Guest.GuestName, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.Label("Departure")
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.tblFlight.FlightOrigin, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.Label("Destination")
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.tblFlight.FlightDestination, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.Label("Email")
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Guest.GuestEmail, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.Label("Contact")
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Guest.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                </tr>
-            </table>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Contact")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Guest.GuestPhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
 
+                </table>
+            </div>
+            
+            <div class="col-md-4">
+                <h3>Flight Details</h3>
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Label("From")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.tblFlight.FlightOrigin, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("To")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.tblFlight.FlightDestination, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Date of Journey")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.tblFlight.FlightDestination, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Departure Time")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.tblFlight.DestinationTime, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Arrival Time")
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.tblFlight.ArrivalTime, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
+
+<div style="background-color:lightgray" >
+    <div class="container" style="font-size:15px; font-family:'Arial Rounded MT'">
+        <h3 style="font-family:">Acknowledgement </h3>
+        @Html.CheckBox("isChecked")
+        I understand and agree with the Fare Rules , the Privacy Policy , the User Agreement and Terms of Service of CG Airlines
+      <br />
+        <br />
+        <input type="submit" value="Submit" class="btn btn-success" />
+    </div>
+</div>

@@ -12,6 +12,9 @@
         OARSMVC.tblFlight tblFlight = new tblFlight();
 
     }*@
+@{ 
+    tblFlight flight = new tblFlight();
+}
 <div>
     <div class="left">
 
@@ -78,7 +81,8 @@
         <div class="container container-fluid">
             <div class="form-group">
                 @Html.Label("Flight Number")
-                
+                @*@Html.LabelFor(model=>flight.FlightNumber)*@
+              @*  @Html.TextBox(flight.FlightNumber)*@
                 <br />
                 @Html.Label("From")
                 <br />

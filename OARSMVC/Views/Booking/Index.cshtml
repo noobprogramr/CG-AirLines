@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OARSMVC.Models.tblGuest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestGender)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestPhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestGender)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
