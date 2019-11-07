@@ -61,8 +61,8 @@ namespace OARSMVC.Controllers
            
             List<tblFlight> flights = db.tblFlights.ToList();
             List<Guest> guests = db.Guests.ToList();
-           
-            ViewBag.FlightNumber = new SelectList(db.tblFlights, "FlightNumber", "FlightNumber");
+
+            //var flightnumber = (from f in db.tblFlights select f.FlightNumber).Where();  
 
             return View();
         }
@@ -127,7 +127,7 @@ namespace OARSMVC.Controllers
 
         public ActionResult ConfirmBooking()
         {
-
+            bool isChecked;
             return View();
         }
     }
