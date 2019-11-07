@@ -130,5 +130,15 @@ namespace OARSMVC.Controllers
 
             return View();
         }
+
+        public ActionResult TicketStatus()
+        {
+            var BookingPNR = db.tblBookings.Where(b => b.BookingRecord == 1).Select(b => b.BookingPNR).ToList();
+            
+            ViewBag.PNR = new SelectList(BookingPNR);
+            return View(db.tblBookings.ToList());
+           
+        }
+            
     }
 }

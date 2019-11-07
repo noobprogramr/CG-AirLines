@@ -4,15 +4,12 @@
     Layout = "~/Views/Shared/_OARSLayout.cshtml";
 }
 
-@{
     ViewBag.Title = "Index";
 }
 @{
-    Passenger obj = new Passenger();
+    Passenger emp = new Passenger();
 }
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <head>
     <style>
         th {
@@ -46,11 +43,7 @@
         }
     </style>
 </head>
-<script>
-    $(document).ready(function () {
-        $("#EnterDate").datepicker();
-    });
-</script>
+
 
 <div>
     <div class="left">
@@ -82,8 +75,10 @@
             <td>@Html.DropDownList("FlightDestination", ViewBag.FlightDestination as SelectList, "To", htmlAttributes: new { @class = "form-control" })</td>
 
             <td>
-                @Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })
-
+                @*@Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                <form class="form-control" style="text-align:center; background-color:lightgray; border-color:lightgray ">
+                    <input type="date" />
+                </form>
             </td>
             <td>
                 @Html.DropDownList("seats",
@@ -92,8 +87,8 @@
                         new { @class = "form-control" })
             </td>
             <td>
-                <input type="submit" value="search" class="btn btn-info " />
-                @*<b style="text-align:center">  @Html.ActionLink("Search", "Search", new { id =   }, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b>*@
+                @*<input type="submit" value="search" class="btn btn-info " />*@
+                <b style="text-align:center">  @Html.ActionLink("Search", "Search", null, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b>
             </td>
         </tr>
 

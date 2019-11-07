@@ -51,7 +51,8 @@
         <td>@Html.DropDownList("FlightDestination", ViewBag.FlightDestination as SelectList, "To", htmlAttributes: new { @class = "form-control" })</td>
 
         <td>
-            @Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => obj.EnterDate, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input type="datetime-local" name="Date of Journey" />
 
         </td>
         <td>

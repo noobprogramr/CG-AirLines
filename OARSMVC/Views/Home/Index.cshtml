@@ -1,31 +1,65 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Online Airlines Reservation System";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<head>
+    <style>
+        h2 {
+            margin: 1em 0 0.5em 0;
+            color: #343434;
+            font-weight: normal;
+            font-family: 'Ultra', sans-serif;
+            font-size: 36px;
+            line-height: 42px;
+            text-transform: uppercase;
+            text-shadow: 0 2px white, 0 3px #777;
+        }
+        
+        
+    </style>
+</head>
+<body>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <h2 style="background-color:aliceblue"><marquee>CG Airlines Reservation System</marquee></h2>
+    <p></p>
+    <div class="jumbotron">
+
+        <p class="lead">CG Airlines Reservation System is a new state of the art reservation system that has built in class search features and best flying rates in the country </p>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-4 jumbotron">
+            <h2>Administrator</h2>
+            <p>
+                <ol>
+                    <li>Login</li>
+                    <li>Add new flights into the system</li>
+                    <li>Flight Analysis Reports</li>
+                    <li>Flight status Modification</li>
+                </ol>
+            </p>
+            <p><b style="text-align:center">  @Html.ActionLink("Admin", "Index", "Guest", null, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b></p>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4 jumbotron">
+            <h2>Guest User</h2>
+            <p>
+                <ol>
+                    <li>Search Flight</li>
+                    <li>Book Flight</li>
+                    <li>Cancel Flight</li>
+                    <li>Check PNR and Flight Status</li>
+                </ol>
+            </p>
+            <p><b style="text-align:center">  @Html.ActionLink("Guest User", "Index","Guest",null, new { @style = "background-color:dodgerblue; color:white", @class = "ui-button img-rounded form-control" }) </b></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    
+    <div>
+        <p>Administrator</p>
     </div>
-</div>
+</body>
+
