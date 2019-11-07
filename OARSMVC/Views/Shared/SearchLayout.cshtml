@@ -1,0 +1,72 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>@ViewBag.Title - CG Airlines - Online Airline Reservation System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .footer {
+            position: sticky;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            height: 120px;
+        }
+    </style>
+
+</head>
+
+
+<body background="~/Images/banner-bg.jpg">
+
+
+    <div class="navbar navbar-fixed-top" style="background-color:darkslateblue;text-align:center">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*  @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+                <p style="color:white;align-content:center;margin-top:15px;font-size:15px">
+                    <span class="glyphicon glyphicon-envelope"></span>&nbsp;
+                    Email:OnlineAirlineReservationSystem@cgairlines.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <span class="glyphicon glyphicon-earphone"></span> &nbsp;
+                    <span style="font-size:15px">Contact:9874563210</span>
+                </p>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+
+        </div>
+
+ 
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
